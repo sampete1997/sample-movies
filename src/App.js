@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Video from './Video';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import VideoList from './VideoList';
 
 
@@ -22,6 +22,10 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <h1 className="fx">
+        <Link className="linkTitle" to={"/"} >
+        Movies-Flix
+        </Link> </h1>
       <VideoContext.Provider value={
         {
           data: vid,

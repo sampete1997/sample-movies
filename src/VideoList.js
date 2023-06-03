@@ -15,7 +15,6 @@ const VideoList = () => {
     return (
         <div>
 
-            <h1 className="fx">Movies-Flix </h1>
             <div className="vidBg">
                 {
                     data.map((ele) => {
