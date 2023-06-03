@@ -1,22 +1,44 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Video from './Video';
+import { Routes, Route } from 'react-router-dom';
+import VideoList from './VideoList';
+
+
+
+export const VideoContext = React.createContext();
 
 function App() {
-  const [close, setClose] = useState(false)
-  const handleClose = () => {
-    setClose(true)
-  }
+
+  const [vid, setVid] = useState([])
+  const [vidData, setVideoData] = useState({})
+
+
+  useEffect(() => {
+    fetch("https://mocki.io/v1/c6b30faa-7e8a-426c-94fd-b14464d5454e")
+      .then((data) => (data.json()))
+      .then((data) => setVid(data.categories[0].videos))
+      .catch((e) => console.log("err", e))
+  }, [])
   return (
     <div className="App">
-      <p onClick={() => setClose(false)}>ON</p>
-      <div className='modal' style={close ? { display: 'none' } : {}}>
-        <div>      React Interview Questions for Freshers
-          1. What is React?
-          React is a front-end and open-source JavaScript library which is useful in developing user interfaces specifically for applications with a single page. It is helpful in building complex and reusable user interface(UI) components of mobile and web applications as it follows the component-based approach.
-        </div>
-        <input type='text'></input>
-        <div onClick={handleClose}>X</div>
-      </div>
+      <VideoContext.Provider value={
+        {
+          data: vid,
+          getVideoData: (data) => {
+            setVideoData(data)
+          },
+          vidData: vidData,
+
+        }
+      }>
+
+        <Routes>
+          <Route path='/' element={<VideoList />} />
+          <Route path='/video/:title' element={<Video />} />
+
+        </Routes>
+      </VideoContext.Provider>
     </div>
   );
 }

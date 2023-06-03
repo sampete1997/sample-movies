@@ -1,11 +1,16 @@
 .App {
   text-align: center;
-  background-color: whitesmoke;
-  display: flex;
-  justify-content: center;
+  color: white;
+  margin: 10px;
+  overflow: hidden;
+
 }
 
-.modal{
+body {
+  background-color: black;
+}
+
+.modal {
   margin: 50px;
   width: 40%;
   display: flex;
@@ -16,5 +21,76 @@
   font-size: 1.2rem;
   border: 0.5px solid rgba(0, 0, 0, 0.308);
   background-color: white;
-  transition: 200ms;
+  transition: opacity 4s;
+  opacity: 1;
+}
+
+.modal:hover {
+  opacity: 0;
+}
+
+
+
+@keyframes glow {
+
+  from {
+    text-shadow: 0 0 10px #5ef54a, 0 0 20px #569c79, 0 0 30px greenyellow, 0 0 40px green, 0 0 50px green, 0 0 60px green, 0 0 70px green;
+  }
+
+  to {
+    text-shadow: 0 0 20px #74d491, 0 0 30px greenyellow, 0 0 40px green, 0 0 50px green, 0 0 60px green, 0 0 70px green, 0 0 80px greenyellow;
+  }
+}
+
+.fx {
+  /* background-image: linear-gradient(180deg, #ffee02, #b1ff33, #3cff00); */
+  font-size: 40px;
+  color: rgb(60, 255, 0);
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.description{
+  font-size: 14px;
+}
+
+.vidInfo{
+  border: 1px solid green;
+  padding: 5px;
+  border-radius: 5px;
+  width: 98%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.vid {
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: auto;
+  color: green;
+  text-align: start;
+  padding: 2px;
+}
+
+.linkFx {
+  text-decoration: none;
+  color: green;
+}
+
+.vidItem {
+
+  background-color: black;
+  margin: 5px;
+  border: 1px solid green;
+  border-radius: 8px;
+}
+
+.vidBg {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-evenly;
+  overflow-y: scroll;
+  height: 83vh;
 }
