@@ -9,7 +9,7 @@ const Video = ({data} ) => {
 
     return (
         <div className="vid">
-        <video width="100%" height="480" controls>
+        <video width="100%" height="480" controls autoPlay>
             <source src={vidData.sources[0]} type="video/mp4" />
           </video>
           <div className='vidInfo'>
